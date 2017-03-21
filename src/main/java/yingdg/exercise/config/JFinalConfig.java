@@ -1,16 +1,13 @@
 package yingdg.exercise.config;
 
 import com.jfinal.config.*;
-import com.jfinal.kit.Prop;
-import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
-import com.jfinal.plugin.druid.DruidPlugin;
-import com.jfinal.plugin.redis.RedisPlugin;
 import com.jfinal.render.ViewType;
-import yingdg.exercise.config.handler.ResourceHandler;
 import yingdg.exercise.controller.HelloController;
 import yingdg.exercise.config.interceptor.AuthInterceptor;
+import yingdg.exercise.controller.IndexController;
+import yingdg.exercise.model.User;
 
 public class JFinalConfig extends com.jfinal.config.JFinalConfig {
 
@@ -20,6 +17,7 @@ public class JFinalConfig extends com.jfinal.config.JFinalConfig {
     @Override
     public void configConstant(Constants cons) {
         cons.setDevMode(true);
+        cons.setEncoding("utf-8");
         cons.setViewType(ViewType.JSP);
         cons.setUrlParaSeparator("-"); // 默认以"-"分隔
 
@@ -33,15 +31,18 @@ public class JFinalConfig extends com.jfinal.config.JFinalConfig {
 
     /*
      配置访问路由（Servlet）
-     规则：controolerKey/method/v0-v1(参数，getPara()取值)
+     规则：controllerKey（可包含"/"）/method/v0-v1(参数，getPara()取值)
+     支持Rest风格Url
       */
     @Override
     public void configRoute(Routes routes) {
         routes.add("/hello", HelloController.class);
+
+        // 自定义Route
         routes.add(new Routes() {
             @Override
             public void config() {
-                add("/admin", HelloController.class);
+                add("/", IndexController.class);// Rest风格Url，只写controllerKey
             }
         });
     }
@@ -60,10 +61,11 @@ public class JFinalConfig extends com.jfinal.config.JFinalConfig {
                 getProperty("jdbc.driverClassName"));
         plugins.add(c3p0Plugin);
 
+        // 开启数据库中的表与Model的自动映射
         ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(c3p0Plugin);
         plugins.add(activeRecordPlugin);
 
-        // activeRecordPlugin.addMapping("User", User.class);
+        activeRecordPlugin.addMapping("User", User.class);
 
         // redis
         // 非第一次使用use加载的配置，需要通过每次使用use来指定配置文件名再来取值
@@ -95,7 +97,8 @@ public class JFinalConfig extends com.jfinal.config.JFinalConfig {
       */
     @Override
     public void configHandler(Handlers handlers) {
-        handlers.add(new ResourceHandler());
+        // 添加自定义处理器
+        // handlers.add(new ResourceHandler());
     }
 
     /*

@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>MyJFinal</title>
 </head>
 <body>
 <h1 align="center">Hello JFinal</h1>
