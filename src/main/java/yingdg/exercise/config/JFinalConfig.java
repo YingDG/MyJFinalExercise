@@ -5,7 +5,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 import yingdg.exercise.controller.HelloController;
-import yingdg.exercise.config.interceptor.AuthInterceptor;
+import yingdg.exercise.config.interceptor.GlobleInterceptor;
 import yingdg.exercise.controller.IndexController;
 import yingdg.exercise.model.User;
 
@@ -86,8 +86,8 @@ public class JFinalConfig extends com.jfinal.config.JFinalConfig {
       */
     @Override
     public void configInterceptor(Interceptors interceptors) {
-        // 添加自定义拦截器
-        interceptors.add(new AuthInterceptor());
+        // 添加全局自定义拦截器
+        interceptors.add(new GlobleInterceptor());
     }
 
     /*
