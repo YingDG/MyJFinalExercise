@@ -7,6 +7,7 @@ import com.jfinal.render.ViewType;
 import yingdg.exercise.controller.HelloController;
 import yingdg.exercise.config.interceptor.GlobleInterceptor;
 import yingdg.exercise.controller.IndexController;
+import yingdg.exercise.controller.UserController;
 import yingdg.exercise.model.User;
 
 public class JFinalConfig extends com.jfinal.config.JFinalConfig {
@@ -43,6 +44,7 @@ public class JFinalConfig extends com.jfinal.config.JFinalConfig {
             @Override
             public void config() {
                 add("/", IndexController.class);// Rest风格Url，只写controllerKey
+                add("/user", UserController.class);
             }
         });
     }
@@ -65,7 +67,9 @@ public class JFinalConfig extends com.jfinal.config.JFinalConfig {
         ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(c3p0Plugin);
         plugins.add(activeRecordPlugin);
 
-        activeRecordPlugin.addMapping("User", User.class);
+        // 主键名默认id，但可以手动指定
+        // activeRecordPlugin.addMapping("User", User.class);
+        activeRecordPlugin.addMapping("User", "id", User.class);
 
         // redis
         // 非第一次使用use加载的配置，需要通过每次使用use来指定配置文件名再来取值
