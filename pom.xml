@@ -8,6 +8,7 @@
     <name>MyJFinalExercise Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <!--jfinal-->
         <dependency>
             <groupId>jfinal</groupId>
             <artifactId>jfinal</artifactId>
@@ -15,6 +16,37 @@
             <systemPath>${basedir}/lib/jfinal-2.2-bin.jar</systemPath>
             <scope>system</scope>
         </dependency>
+        <!--servlet-->
+        <!--<dependency>-->
+        <!--<groupId>javax.servlet</groupId>-->
+        <!--<artifactId>servlet-api</artifactId>-->
+        <!--<version>2.5</version>-->
+        <!--</dependency>-->
+
+        <!--data source-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.40</version>
+        </dependency>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>mchange-commons-java</artifactId>
+            <version>0.2.10</version>
+        </dependency>
+
+        <!--ehcache-->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
