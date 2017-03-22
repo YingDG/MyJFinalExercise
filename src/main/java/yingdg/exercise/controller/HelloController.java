@@ -28,7 +28,7 @@ public class HelloController extends Controller {
     }
 
     // 配置多个Method级别的拦截器，仅拦截本方法
-    @Before({TestAOP.class, Test2AOP.class}) // restUrl与aop配合使用会出现bug，无法与render方法共用
+    @Before({TestAOP.class/*, Test2AOP.class*/}) // 方法级AOP不能与其他类共用，否则会有异常
     public void test() {
         // 示例Url：http://localhost:8080/hello/test/2-N2-a=2
 

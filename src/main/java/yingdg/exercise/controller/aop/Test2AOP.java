@@ -12,6 +12,7 @@ public class Test2AOP implements Interceptor {
     @Override
     public void intercept(Invocation invocation) {
         System.out.println("userDao." + invocation.getMethodName());
+        invocation.invoke();
     }
 
 }
