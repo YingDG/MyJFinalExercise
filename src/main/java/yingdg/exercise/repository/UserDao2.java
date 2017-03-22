@@ -4,15 +4,14 @@ import com.jfinal.aop.Before;
 import com.jfinal.aop.Enhancer;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
-import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Page;
-import com.jfinal.plugin.activerecord.Record;
+import com.jfinal.plugin.activerecord.*;
 import com.jfinal.plugin.activerecord.cache.EhCache;
+import com.jfinal.plugin.activerecord.tx.Tx;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import yingdg.exercise.controller.aop.Test2AOP;
 import yingdg.exercise.model.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -46,6 +45,7 @@ public class UserDao2 {
         return Db.save("user", user);
     }
 
+    @Before(Tx.class) // 声明式事务
     public boolean removeUser() {
         return Db.deleteById("user", 1);
     }
@@ -102,6 +102,17 @@ public class UserDao2 {
         // userDao.createUser();
         // userDao.pageFindUsers();
         userDao.findUser();
+
+        // JFinal事务
+        Db.tx(new IAtom() {
+            @Override
+            public boolean run() throws SQLException {
+                int result1 = Db.update("update user set username = ?, age = ? where id = ?", "user2", 10, 13);
+                int result2 = Db.update("update user set age = age +2 where id = ?", 14);
+                return result1 == 1 && result2 == 2;
+            }
+        });
+
     }
 
 }

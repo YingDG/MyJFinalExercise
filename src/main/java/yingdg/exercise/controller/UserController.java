@@ -56,8 +56,11 @@ public class UserController extends Controller {
     @Before(CacheInterceptor.class)
     @CacheName("/user/all/cache")
     public void all2() {
+        // List<User> users = UserDao.dao.findByCache("/user/all/cache", "id", "select * from user");
+        // if (users == null || users.isEmpty()) {
         List<User> all = dao.findAll();
-        render(all.toString());
+        setAttr("request", all).render(all.toString());
+        // }
     }
 
 }

@@ -1,6 +1,5 @@
 package yingdg.exercise.model;
 
-
 import com.jfinal.plugin.activerecord.Model;
 
 /**
