@@ -39,25 +39,25 @@ public class UserDao2 {
         activeRecordPlugin.start();
     }
 
-    /* CRUD操作*/
+    /* CRUD操作，Db + Record 用法*/
 
     public boolean createUser() {
-        return new User()
-                // .set("id", 1)
-                .set("username", "zhangsan")
-                .set("age", 22)
-                .save();
+        Record user = new Record().set("username", "wangwu").set("age", 30);
+        return Db.save("user", user);
     }
 
     public boolean removeUser() {
-        return UserDao2.dao.deleteById(1);
+        return Db.deleteById("user", 1);
     }
 
     public boolean updateUser() {
-        return UserDao2.dao.findById(2).set("username", "lisi").update();
+        Record user = Db.findById("user", 4).set("username", "maqi");
+        return Db.update("user", user);
     }
 
     public User findUser() {
+        Record user = Db.use("main").findById("user", 4);
+        System.out.println(user);
         /*
         只有在同一个Model希望对应到多个数据源的table时才需要使用 use 方法，
         如果同一个 Model 唯一对应个数据源的一个 table，那么数据源的切换是自动的，无需使用 use 方法
@@ -84,12 +84,24 @@ public class UserDao2 {
                 20);
 
         List<User> userList = userPage.getList();
-        System.out.println(userList);
+        // System.out.println(userList);
+
+        Page<Record> userPage2 = Db.paginate(
+                1,
+                2,
+                "select *",
+                "from user where age > ?",
+                20
+        );
+        System.out.println(userPage2);
     }
 
     public static void main(String[] args) {
         UserDao2 userDao = Enhancer.enhance(UserDao2.class);
-        System.out.println(userDao.findUser());
+
+        // userDao.createUser();
+        // userDao.pageFindUsers();
+        userDao.findUser();
     }
 
 }
