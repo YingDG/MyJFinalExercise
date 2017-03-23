@@ -8,7 +8,7 @@ import com.jfinal.plugin.activerecord.*;
 import com.jfinal.plugin.activerecord.cache.EhCache;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
-import yingdg.exercise.controller.aop.Test2AOP;
+import yingdg.exercise.controller.aop.UserDaoAOP;
 import yingdg.exercise.model.User;
 
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by YingDG on 2017/3/21.
  */
-@Before(Test2AOP.class)
+@Before(UserDaoAOP.class)
 public class UserDao2 {
     /*
     定义的 public static final User dao 对象是全局共享的，
@@ -45,7 +45,7 @@ public class UserDao2 {
         return Db.save("user", user);
     }
 
-    @Before(Tx.class) // 声明式事务
+    @Before(Tx.class) // JFinal声明式事务
     public boolean removeUser() {
         return Db.deleteById("user", 1);
     }
@@ -103,7 +103,7 @@ public class UserDao2 {
         // userDao.pageFindUsers();
         userDao.findUser();
 
-        // JFinal事务
+        // JFinal编程式事务
         Db.tx(new IAtom() {
             @Override
             public boolean run() throws SQLException {
