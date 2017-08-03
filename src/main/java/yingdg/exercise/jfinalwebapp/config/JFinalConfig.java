@@ -1,4 +1,4 @@
-package yingdg.exercise.config;
+package yingdg.exercise.jfinalwebapp.config;
 
 import com.jfinal.config.*;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -6,11 +6,11 @@ import com.jfinal.plugin.activerecord.cache.EhCache;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
-import yingdg.exercise.config.interceptor.GlobalInterceptor;
-import yingdg.exercise.controller.HelloController;
-import yingdg.exercise.controller.IndexController;
-import yingdg.exercise.controller.UserController;
-import yingdg.exercise.model.User;
+import yingdg.exercise.jfinalwebapp.config.interceptor.GlobalInterceptor;
+import yingdg.exercise.jfinalwebapp.controller.HelloController;
+import yingdg.exercise.jfinalwebapp.controller.IndexController;
+import yingdg.exercise.jfinalwebapp.controller.UserController;
+import yingdg.exercise.jfinalwebapp.model.User;
 
 /**
  * Web环境配置
@@ -80,11 +80,11 @@ public class JFinalConfig extends com.jfinal.config.JFinalConfig {
         // activeRecordPlugin.setTransactionLevel(8);
         // 配置缓存
         activeRecordPlugin.setCache(new EhCache());
-        plugins.add(activeRecordPlugin);
-
         // 开启数据库中的表与Model的自动映射
         activeRecordPlugin.addMapping("User", User.class);
         // activeRecordPlugin.addMapping("User", "id", User.class); // 主键名默认id，但可以手动指定
+
+        plugins.add(activeRecordPlugin);
 
         // redis
         // 非第一次使用use加载的配置，需要通过每次使用use来指定配置文件名再来取值

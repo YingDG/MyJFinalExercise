@@ -1,4 +1,4 @@
-package yingdg.exercise.model;
+package yingdg.exercise.jfinalwebapp.model;
 
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;

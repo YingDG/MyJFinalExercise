@@ -1,12 +1,12 @@
-package yingdg.exercise.controller;
+package yingdg.exercise.jfinalwebapp.controller;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.jfinal.plugin.ehcache.CacheName;
-import yingdg.exercise.model.User;
-import yingdg.exercise.repository.UserDao;
+import yingdg.exercise.jfinalwebapp.model.User;
+import yingdg.exercise.jfinalwebapp.repository.UserDao;
 
 import java.util.List;
 

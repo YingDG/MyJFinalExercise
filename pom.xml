@@ -10,12 +10,11 @@
     <dependencies>
         <!--jfinal-->
         <dependency>
-            <groupId>jfinal</groupId>
+            <groupId>com.jfinal</groupId>
             <artifactId>jfinal</artifactId>
             <version>2.2</version>
-            <systemPath>${basedir}/lib/jfinal-2.2-bin.jar</systemPath>
-            <scope>system</scope>
         </dependency>
+
         <!--servlet-->
         <!--<dependency>-->
         <!--<groupId>javax.servlet</groupId>-->
@@ -67,8 +66,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <maxmem>256M</maxmem>
                     <encoding>UTF-8</encoding>
                 </configuration>

@@ -2,13 +2,13 @@
 
 五大组件：
 
-    Constant;
+    Constant
     
-    Route;
+    Route
     
-    Plugin;
+    Plugin
     
-    Interceptor;
+    Interceptor
     
-    Handler;
+    Handler
     

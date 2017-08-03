@@ -1,11 +1,11 @@
-package yingdg.exercise.repository;
+package yingdg.exercise.jfinalwebapp.repository;
 
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
-import yingdg.exercise.controller.aop.Test2AOP;
-import yingdg.exercise.model.User;
+import yingdg.exercise.jfinalwebapp.controller.aop.UserDaoAOP;
+import yingdg.exercise.jfinalwebapp.model.User;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class UserDao {
     // AOP测试
-    @Before(Test2AOP.class)
+    @Before(UserDaoAOP.class)
     public void go() {
         System.out.println("UserDao goes.");
     }

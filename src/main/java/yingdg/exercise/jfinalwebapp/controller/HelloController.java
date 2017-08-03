@@ -1,15 +1,15 @@
-package yingdg.exercise.controller;
+package yingdg.exercise.jfinalwebapp.controller;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.aop.Enhancer;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
-import yingdg.exercise.controller.aop.HelloAOP;
-import yingdg.exercise.controller.aop.Test2AOP;
-import yingdg.exercise.controller.aop.TestAOP;
-import yingdg.exercise.model.User;
-import yingdg.exercise.repository.UserDao;
+import yingdg.exercise.jfinalwebapp.controller.aop.HelloAOP;
+import yingdg.exercise.jfinalwebapp.controller.aop.TestAOP;
+import yingdg.exercise.jfinalwebapp.validator.HelloValidator;
+import yingdg.exercise.jfinalwebapp.model.User;
+import yingdg.exercise.jfinalwebapp.repository.UserDao;
 
 /*
 定义的 public 无参方法称为一个 Action。
@@ -28,7 +28,7 @@ public class HelloController extends Controller {
     }
 
     // 配置多个Method级别的拦截器，仅拦截本方法
-    @Before({TestAOP.class/*, Test2AOP.class*/}) // 方法级AOP不能与其他类共用，否则会有异常
+    @Before({TestAOP.class/*, HelloValidator.class */}) // 方法级AOP类不能共用，否则会有异常
     public void test() {
         // 示例Url：http://localhost:8080/hello/test/2-N2-a=2
 
@@ -45,8 +45,9 @@ public class HelloController extends Controller {
     }
 
     @Clear(HelloAOP.class) // 清除指定的拦截器，但Method级的拦截器无法被清除
+    @Before(HelloValidator.class)
     public void save() {
-        // 页面的modelName正好是Blog类名的首字母小写
+        // 页面的modelName正好是User类名的首字母小写
         // User user = getModel(User.class);
 
         // 如果表单域的名称为 "u.username"可加上一个参数来获取

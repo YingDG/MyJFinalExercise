@@ -1,4 +1,4 @@
-package yingdg.exercise.controller;
+package yingdg.exercise.jfinalwebapp.controller;
 
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
