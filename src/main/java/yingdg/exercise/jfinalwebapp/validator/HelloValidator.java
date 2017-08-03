@@ -1,8 +1,8 @@
-package yingdg.exercise.validator;
+package yingdg.exercise.jfinalwebapp.validator;
 
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
-import yingdg.exercise.model.User;
+import yingdg.exercise.jfinalwebapp.model.User;
 
 /**
  * 前端请求校验类示例

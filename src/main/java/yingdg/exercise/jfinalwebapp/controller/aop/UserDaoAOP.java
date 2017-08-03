@@ -1,8 +1,7 @@
-package yingdg.exercise.controller.aop;
+package yingdg.exercise.jfinalwebapp.controller.aop;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
-import yingdg.exercise.repository.UserDao;
 
 /**
  * Created by YingDG on 2017/3/21.

@@ -1,4 +1,4 @@
-package yingdg.exercise.repository;
+package yingdg.exercise.jfinalwebapp.repository;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Enhancer;
@@ -8,8 +8,8 @@ import com.jfinal.plugin.activerecord.*;
 import com.jfinal.plugin.activerecord.cache.EhCache;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
-import yingdg.exercise.controller.aop.UserDaoAOP;
-import yingdg.exercise.model.User;
+import yingdg.exercise.jfinalwebapp.controller.aop.UserDaoAOP;
+import yingdg.exercise.jfinalwebapp.model.User;
 
 import java.sql.SQLException;
 import java.util.List;

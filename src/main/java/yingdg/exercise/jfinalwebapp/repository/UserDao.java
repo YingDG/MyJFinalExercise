@@ -1,11 +1,11 @@
-package yingdg.exercise.repository;
+package yingdg.exercise.jfinalwebapp.repository;
 
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
-import yingdg.exercise.controller.aop.UserDaoAOP;
-import yingdg.exercise.model.User;
+import yingdg.exercise.jfinalwebapp.controller.aop.UserDaoAOP;
+import yingdg.exercise.jfinalwebapp.model.User;
 
 import java.util.List;
 

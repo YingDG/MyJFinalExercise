@@ -1,4 +1,4 @@
-package yingdg.exercise.config.interceptor;
+package yingdg.exercise.jfinalwebapp.config.interceptor;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
